@@ -26,3 +26,6 @@ gestion-formations/
 ├─ index.html
 ├─ formations.json
 └─ README.md
+## Hébergement GitHub
+lien :https://amirab123.github.io/GestionFormationsVuejs/
+
