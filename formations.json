@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "titre": "Initiation au HTML et CSS",
+    "places": 20,
+    "date": "2025-11-05",
+    "complet": false
+  },
+  {
+    "id": 2,
+    "titre": "JavaScript pour débutants",
+    "places": 15,
+    "date": "2025-11-12",
+    "complet": false
+  },
+  {
+    "id": 3,
+    "titre": "Maîtriser le DOM et les événements en JavaScript",
+    "places": 10,
+    "date": "2025-11-18",
+    "complet": true
+  },
+  {
+    "id": 4,
+    "titre": "Introduction à Vue.js 3",
+    "places": 12,
+    "date": "2025-11-25",
+    "complet": false
+  },
+  {
+    "id": 5,
+    "titre": "React.js : les bases essentielles",
+    "places": 18,
+    "date": "2025-12-02",
+    "complet": false
+  },
+  {
+    "id": 6,
+    "titre": "Créer des API REST avec Node.js et Express",
+    "places": 14,
+    "date": "2025-12-09",
+    "complet": true
+  },
+  {
+    "id": 7,
+    "titre": "Bases de données avec MySQL pour développeurs web",
+    "places": 10,
+    "date": "2025-12-15",
+    "complet": false
+  },
+  {
+    "id": 8,
+    "titre": "Découverte de MongoDB et Mongoose",
+    "places": 8,
+    "date": "2026-01-05",
+    "complet": false
+  },
+  {
+    "id": 9,
+    "titre": "Développement Fullstack avec Vue.js et Node.js",
+    "places": 10,
+    "date": "2026-01-12",
+    "complet": false
+  },
+  {
+    "id": 10,
+    "titre": "PHP moderne avec Laravel",
+    "places": 16,
+    "date": "2026-01-19",
+    "complet": true
+  },
+  {
+    "id": 11,
+    "titre": "Sécurité et Authentification JWT dans les applications web",
+    "places": 12,
+    "date": "2026-01-26",
+    "complet": false
+  },
+  {
+    "id": 12,
+    "titre": "Création de sites responsives avec Tailwind CSS",
+    "places": 20,
+    "date": "2026-02-02",
+    "complet": false
+  },
+  {
+    "id": 13,
+    "titre": "Déploiement web avec Docker et Nginx",
+    "places": 10,
+    "date": "2026-02-09",
+    "complet": false
+  },
+  {
+    "id": 14,
+    "titre": "TypeScript pour développeurs JavaScript",
+    "places": 15,
+    "date": "2026-02-16",
+    "complet": true
+  },
+  {
+    "id": 15,
+    "titre": "Développement mobile avec Vue Native",
+    "places": 12,
+    "date": "2026-02-23",
+    "complet": false
+  }
+]

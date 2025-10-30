@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 2- Liste des formations - Vue.js</title>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex flex-col  p-8">
+    
+  <div id="app" class="w-full md:w-3/4 lg:w-2/3 mx-auto  p-6">
+
+<h1 class="text-3xl font-bold text-green-700 mb-8 flex items-center justify-center gap-3">
+  <img src="img/online-learning.png" alt="Icône" class="w-8 h-8">
+  Liste des formations
+</h1>
+
+
+      <div
+        v-if="formations.length === 0 && !chargement"
+        class="text-center text-gray-600 text-xl  italic gras"
+      >
+        Aucune formation disponible pour le moment.
+      </div>
+
+
+      <div
+        v-if="chargement"
+        class="text-center text-indigo-500 text-lg font-medium animate-pulse"
+      >
+        Chargement des formations...
+      </div>
+
+  
+      <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          v-for="formation in formations"
+          :key="formation.id"
+          class="bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow"
+        >
+          <h2 class="text-xl font-semibold mb-2 text-gray-600">
+            {{ formation.titre }}
+          </h2>
+
+          <p class="text-gray-700 mb-1">
+            <img src="img/timetable.png" alt="date" class="w-6 h-6 inline-block mr-2">
+             Date : <span class="font-medium">{{ formation.date }}</span>
+          </p>
+          <p class="text-gray-700 mb-1">
+            <img src="img/youth.png" alt="places" class="w-6 h-6 inline-block mr-2">
+             Places : <span class="font-medium">{{ formation.places }}</span>
+          </p>
+
+        
+
+          <p
+            class="mb-4 font-semibold"
+            :class="formation.complet ? 'text-red-600 text-lg' : 'text-green-500 text-lg'"
+          >  Status :
+            {{ formation.complet ? 'Complet' : 'Disponible' }}
+          </p>
+
+    
+          <div class="flex justify-between">
+            <button
+              @click="modifierTitre(formation)"
+              class="bg-cyan-400 hover:bg-cyan-500 text-white font-semibold px-3 py-1 rounded-lg"
+            >
+            <img src="img/changes.png" alt=" modifier" class="w-5 h-5 inline-block mr-1">
+               Modifier
+            </button>
+            <button
+              @click="supprimerFormation(formation.id)"
+              class="bg-red-500 hover:bg-red-600 text-white font-semibold px-3 py-1 rounded-lg"
+            >
+            <img src="img/trash.png" alt="Supprimer  " class="w-5 h-5 inline-block mr-1"> Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            formations: [],
+            chargement: true, 
+          };
+        },
+        methods: {
+          async chargerFormations() {
+            try {
+              const reponse = await fetch("formations.json");
+              if (!reponse.ok) {
+                throw new Error("Erreur lors du chargement du fichier JSON");
+              }
+              const data = await reponse.json();
+              this.formations = data;
+            } catch (erreur) {
+              console.error("❌ Erreur de chargement :", erreur);
+              alert("Impossible de charger les formations !");
+            } finally {
+              this.chargement = false;
+            }
+          },
+          supprimerFormation(id) {
+            this.formations = this.formations.filter((f) => f.id !== id);
+          },
+          modifierTitre(formation) {
+            const nouveauTitre = prompt(
+              "Entrez le nouveau titre de la formation :",
+              formation.titre
+            );
+            if (nouveauTitre && nouveauTitre.trim() !== "") {
+              formation.titre = nouveauTitre.trim();
+            } else {
+              alert("❌ Le titre ne peut pas être vide !");
+            }
+          },
+        },
+        mounted() {
+          this.chargerFormations();
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
